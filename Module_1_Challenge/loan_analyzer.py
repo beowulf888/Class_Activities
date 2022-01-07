@@ -85,7 +85,7 @@ print ("The remain months on the loan is:",remaining_months)
 
 # YOUR CODE HERE!
 
-present_value=future_value/(1+.20)**remaining_months
+present_value=future_value/(1+.20/12)**remaining_months
 
 # If Present Value represents what the loan is really worth, does it make sense to buy the loan at its cost?
 # @TODO: Write a conditional statement (an if-else statement) to decide if the present value represents the loan's fair value.
@@ -94,9 +94,12 @@ present_value=future_value/(1+.20)**remaining_months
 # YOUR CODE HERE!
 
 loan_cost=loan.get("loan_price")
-if present_value >= loan_costs:
+if present_value >= loan_cost:
     print("The loan is worth at least the cost of the loan")
-else print("The loan is too exspensive and not worth the price")
+else:
+     print("The loan is too exspensive and not worth the price")
+print(f"The present value of the loan is: {present_value: .2f}")
+
 
 """Part 3: Perform Financial Calculations.
 
@@ -122,11 +125,22 @@ new_loan = {
 #    The function should return the `present_value` for the loan.
 # YOUR CODE HERE!
 
+def present_value_finder(remaining_months, future_value, annual_discount_rate):
+    present_value=future_value/(1+annual_discount_rate/12)**remaining_months
+    loan_cost=new_loan.get("loan_price")
+    if present_value >= loan_cost:
+        print("The loan is worth at least the cost of the loan")
+    else:
+        print("The loan is too exspensive and not worth the price")
+    print(f"The present value of the loan is: {present_value: .2f}")
+
+
 
 # @TODO: Use the function to calculate the present value of the new loan given below.
 #    Use an `annual_discount_rate` of 0.2 for this new loan calculation.
 # YOUR CODE HERE!
-print(f"The present value of the loan is: {present_value}")
+
+present_value_finder(12,1000,.20)
 
 
 """Part 4: Conditionally filter lists of loans.
@@ -170,8 +184,17 @@ loans = [
 # @TODO: Create an empty list called `inexpensive_loans`
 # YOUR CODE HERE!
 
+# inexspensive_loans[""]
+
+
 # @TODO: Loop through all the loans and append any that cost $500 or less to the `inexpensive_loans` list
 # YOUR CODE HERE!
+
+# for loans
+
+  #  if cost_loans < 500:
+   #     append to inexpensive list
+
 
 # @TODO: Print the `inexpensive_loans` list
 # YOUR CODE HERE!
