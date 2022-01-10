@@ -77,6 +77,7 @@ print ("The remain months on the loan is:",remaining_months)
 
 # YOUR CODE HERE!
 
+# folmula to find the present value
 present_value=future_value/(1+.20/12)**remaining_months
 
 # If Present Value represents what the loan is really worth, does it make sense to buy the loan at its cost?
@@ -115,6 +116,8 @@ new_loan = {
 #    The function should return the `present_value` for the loan.
 # YOUR CODE HERE!
 
+
+# define the function present_value_finder
 def present_value_finder(remaining_months, future_value, annual_discount_rate):
     present_value=future_value/(1+annual_discount_rate/12)**remaining_months
     loan_cost=new_loan.get("loan_price")
@@ -130,6 +133,7 @@ def present_value_finder(remaining_months, future_value, annual_discount_rate):
 #    Use an `annual_discount_rate` of 0.2 for this new loan calculation.
 # YOUR CODE HERE!
 
+# call the function present_value_finder 
 present_value_finder(12,1000,.20)
 
 
@@ -172,12 +176,15 @@ loans = [
 # @TODO: Create an empty list called `inexpensive_loans`
 # YOUR CODE HERE!
 
+# create an empty list called inexspensive_loans
 inexspensive_loans=[]
 
 
 # @TODO: Loop through all the loans and append any that cost $500 or less to the `inexpensive_loans` list
 # YOUR CODE HERE!
 
+
+# add the loans that are less than $500 to the inexspensive_loans list
 for item in loans: 
     loan_price=item["loan_price"]
     if loan_price <=500:
@@ -187,6 +194,7 @@ for item in loans:
 # @TODO: Print the `inexpensive_loans` list
 # YOUR CODE HERE!
 
+# print the loans that are inexspensive 
 print (inexspensive_loans)
 
 """Part 5: Save the results.
@@ -204,7 +212,7 @@ Output this list of inexpensive loans to a csv file
 header = ["loan_price", "remaining_months", "repayment_interval", "future_value"]
 
 # Set the output file path
-output_path = Path("inexpensive_loans.csv")
+output_path = Path("inexspensive_loans.csv")
 
 # @TODO: Use the csv library and `csv.writer` to write the header row
 # and each row of `loan.values()` from the `inexpensive_loans` list.
@@ -213,11 +221,11 @@ output_path = Path("inexpensive_loans.csv")
 import csv
 from pathlib import Path
 
+# sets the path
 csvpath = Path("inexspensive_loans.csv")
-print("Writing the data to a csv file...")
 
 with open(csvpath, 'w') as csvfile:
-    csvwriter = csv.writer(csvfile, delimiter=",")
+    csvwriter = csv.writer(csvfile)
     csvwriter.writerow(header)
     for item in inexspensive_loans:
         csvwriter.writerow(loan.values())
