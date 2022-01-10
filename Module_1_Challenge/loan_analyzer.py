@@ -229,3 +229,5 @@ with open(csvpath, 'w') as csvfile:
     csvwriter.writerow(header)
     for item in inexspensive_loans:
         csvwriter.writerow(loan.values())
+
+# finished 
